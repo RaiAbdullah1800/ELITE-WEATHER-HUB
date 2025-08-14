@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Streamlit specific
+.streamlit/secrets.toml  # IMPORTANT: Exclude your secrets.toml file!
+.streamlit/cache/       # Streamlit's caching directory
+.streamlit/local_storage/ # Streamlit's local storage for user data
+
+# IDE specific files (e.g., VS Code, PyCharm)
+.vscode/
+.idea/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Jupyter Notebook files (if applicable)
+.ipynb_checkpoints/
