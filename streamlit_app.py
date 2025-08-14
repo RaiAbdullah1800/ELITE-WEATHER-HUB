@@ -202,12 +202,42 @@ st.markdown("""
         50% { text-shadow: 0 0 40px currentColor, 0 0 60px currentColor; }
     }
     
-    /* Selectbox Styling */
-    .stSelectbox > div > div > div {
+    /* Selectbox Styling - force dark in all OS themes */
+    .stSelectbox * { color-scheme: dark; }
+    .stSelectbox > div > div > div,
+    .stSelectbox div[data-baseweb="select"] > div {
         background: rgba(255, 255, 255, 0.1) !important;
         border: 2px solid rgba(255, 255, 255, 0.2) !important;
         border-radius: 15px !important;
-        color: white !important;
+        color: #e9eefc !important;
+        min-height: 48px !important;
+    }
+    .stSelectbox div[data-baseweb="select"] input {
+        color: #e9eefc !important;
+        background: transparent !important;
+        caret-color: #e9eefc !important;
+    }
+    .stSelectbox div[role="listbox"], 
+    .stSelectbox ul[role="listbox"] {
+        background: rgba(7, 11, 26, 0.98) !important;
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    }
+    .stSelectbox [role="option"] {
+        color: #e9eefc !important;
+    }
+    .stSelectbox [role="option"][aria-selected="true"] {
+        background: rgba(102, 126, 234, 0.25) !important;
+    }
+    .stSelectbox [role="option"]:hover {
+        background: rgba(79, 172, 254, 0.25) !important;
+    }
+    @media (prefers-color-scheme: light) {
+        .stSelectbox div[data-baseweb="select"] > div,
+        .stSelectbox div[role="listbox"],
+        .stSelectbox ul[role="listbox"] {
+            background: rgba(7, 11, 26, 0.98) !important;
+            color: #e9eefc !important;
+        }
     }
     
     /* Hide Streamlit Elements */
@@ -800,11 +830,24 @@ def main():
     st.markdown("""
     <style>
     .hero-select-card { margin: 1.25rem auto 0 auto; padding: 20px 22px; border-radius: 20px; }
-    .hero-select-card .stSelectbox > div > div { background: rgba(255,255,255,0.08) !important; border: 2px solid rgba(255,255,255,0.18) !important; border-radius: 14px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15) !important; }
-    .hero-select-card .stSelectbox div[role=\"combobox\"] { padding: 12px 14px !important; color: #e9eefc !important; font-weight: 500; }
+    .hero-select-card .stSelectbox * { color-scheme: dark; }
+    .hero-select-card .stSelectbox > div > div,
+    .hero-select-card .stSelectbox div[data-baseweb="select"] > div { background: rgba(255,255,255,0.08) !important; border: 2px solid rgba(255,255,255,0.18) !important; border-radius: 14px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15) !important; }
+    .hero-select-card .stSelectbox div[role="combobox"] { padding: 14px 16px !important; color: #e9eefc !important; font-weight: 500; }
+    .hero-select-card .stSelectbox div[data-baseweb="select"] input { color: #e9eefc !important; background: transparent !important; caret-color: #e9eefc !important; }
     .hero-select-card .stSelectbox svg { color: #a0b3ff !important; }
     .hero-select-card .stSelectbox > div > div:hover { border-color: rgba(102,126,234,0.65) !important; }
     .hero-select-card .stSelectbox > div > div:focus-within { box-shadow: 0 0 0 3px rgba(79,172,254,0.25), 0 12px 32px rgba(79,172,254,0.25) !important; border-color: rgba(79,172,254,0.8) !important; }
+    .hero-select-card .stSelectbox div[role="listbox"],
+    .hero-select-card .stSelectbox ul[role="listbox"] { background: rgba(7, 11, 26, 0.98) !important; border: 1px solid rgba(255,255,255,0.18) !important; }
+    .hero-select-card .stSelectbox [role="option"] { color: #e9eefc !important; }
+    .hero-select-card .stSelectbox [role="option"][aria-selected="true"] { background: rgba(102, 126, 234, 0.25) !important; }
+    .hero-select-card .stSelectbox [role="option"]:hover { background: rgba(79, 172, 254, 0.25) !important; }
+    @media (prefers-color-scheme: light) {
+        .hero-select-card .stSelectbox div[data-baseweb="select"] > div,
+        .hero-select-card .stSelectbox div[role="listbox"],
+        .hero-select-card .stSelectbox ul[role="listbox"] { background: rgba(7, 11, 26, 0.98) !important; color: #e9eefc !important; }
+    }
     </style>
     """, unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
